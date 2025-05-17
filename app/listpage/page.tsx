@@ -12,7 +12,7 @@ export default function Listpage() {
   const [description, setDescription] = useState("");
 
   const handleCreateList = async () => {
-    const response = await fetch("http://localhost:3000/lists/create", {
+    const response = await fetch("https://cestprevu-backend.onrender.com/lists/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

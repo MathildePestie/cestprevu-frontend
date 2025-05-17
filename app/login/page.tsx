@@ -9,7 +9,7 @@ import styles from "./Login.module.css";
 export default function Login() {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ email: "", password: "", phone: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -18,7 +18,7 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:3000/users/signin", {
+    const response = await fetch("https://cestprevu-backend.onrender.com/users/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -32,6 +32,7 @@ export default function Login() {
         login({
           username: data.username,
           email: form.email,
+          phone: form.phone,
           token: data.token,
           id: data.id,
         })
@@ -39,6 +40,7 @@ export default function Login() {
       console.log("User connecté :", {
         username: data.username,
         email: form.email,
+        phone: form.phone,
         token: data.token,
         id: data.id,
       });

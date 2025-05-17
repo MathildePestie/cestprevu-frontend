@@ -12,7 +12,7 @@ export default function ParticipantsPage() {
   const [list, setList] = useState<any>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/lists/one/${id}`)
+    fetch(`https://cestprevu-backend.onrender.com/lists/one/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.result) {
@@ -62,7 +62,7 @@ export default function ParticipantsPage() {
                       onClick={() => {
                         if (confirm(`Retirer ${m.username} de la liste ?`)) {
                           fetch(
-                            `http://localhost:3000/lists/${list._id}/remove-member`,
+                            `https://cestprevu-backend.onrender.com/lists/${list._id}/remove-member`,
                             {
                               method: "PATCH",
                               headers: { "Content-Type": "application/json" },

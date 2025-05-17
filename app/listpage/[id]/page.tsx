@@ -8,7 +8,7 @@ import Image from "next/image";
 import { useAppSelector } from "../../../redux/store";
 import { notFound } from "next/navigation";
 import { io } from "socket.io-client";
-const socket = io("http://localhost:3000");
+const socket = io("https://cestprevu-backend.onrender.com");
 
 export default function ListDetailPage() {
   const params = useParams();
@@ -51,7 +51,7 @@ export default function ListDetailPage() {
       return;
     }
 
-    fetch(`http://localhost:3000/lists/one/${id}`)
+    fetch(`https://cestprevu-backend.onrender.com/lists/one/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (!data || typeof data !== "object") {
@@ -76,7 +76,7 @@ export default function ListDetailPage() {
   }, [id]);
 
   const handleToggleTask = (index: number) => {
-    fetch(`http://localhost:3000/lists/${list._id}/toggle-task/${index}`, {
+    fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}/toggle-task/${index}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token: user.token }),
@@ -97,7 +97,7 @@ export default function ListDetailPage() {
     const updatedTasks = [...list.tasks];
     updatedTasks.splice(index, 1);
 
-    fetch(`http://localhost:3000/lists/${list._id}`, {
+    fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ tasks: updatedTasks, token: user.token }),
@@ -115,7 +115,7 @@ export default function ListDetailPage() {
   const handleUpdateList = () => {
     if (!canEdit)
       return alert("Tu n'as pas les droits pour modifier cette liste.");
-    fetch(`http://localhost:3000/lists/${list._id}`, {
+    fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -142,7 +142,7 @@ export default function ListDetailPage() {
     const newTask = { text: taskText.trim(), done: false };
     const updatedTasks = [...list.tasks, newTask];
 
-    fetch(`http://localhost:3000/lists/${list._id}`, {
+    fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ tasks: updatedTasks, token: user.token }),
@@ -162,7 +162,7 @@ export default function ListDetailPage() {
     e.preventDefault();
     if (!emailMember.trim() || !isOwner) return;
 
-    fetch(`http://localhost:3000/lists/${list._id}/add-member`, {
+    fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}/add-member`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token: user.token, email: emailMember }),
@@ -179,7 +179,7 @@ export default function ListDetailPage() {
   };
 
   const handleToggleMembersCanEdit = () => {
-    fetch(`http://localhost:3000/lists/${list._id}`, {
+    fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -201,7 +201,7 @@ export default function ListDetailPage() {
 
   const handleAddMemberByEmail = () => {
     if (!emailMember.trim()) return;
-    fetch(`http://localhost:3000/lists/${list._id}/add-member`, {
+    fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}/add-member`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token: user.token, email: emailMember }),
@@ -219,7 +219,7 @@ export default function ListDetailPage() {
 
   const handleAddMemberByPhone = () => {
     if (!phoneMember.trim()) return;
-    fetch(`http://localhost:3000/lists/${list._id}/add-member-phone`, {
+    fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}/add-member-phone`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token: user.token, phone: phoneMember }),
@@ -385,7 +385,7 @@ export default function ListDetailPage() {
                 e.preventDefault();
                 if (!list._id || !emailMember.trim()) return;
 
-                fetch(`http://localhost:3000/lists/${list._id}/add-member`, {
+                fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}/add-member`, {
                   method: "PATCH",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({
@@ -453,7 +453,7 @@ export default function ListDetailPage() {
                             const newValue = !membersCanEdit;
                             setMembersCanEdit(newValue);
 
-                            fetch(`http://localhost:3000/lists/${list._id}`, {
+                            fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}`, {
                               method: "PATCH",
                               headers: { "Content-Type": "application/json" },
                               body: JSON.stringify({

@@ -20,7 +20,7 @@ export default function AccountPage() {
       return;
     }
     console.log("Je vais fetch les listes de :", user.id);
-    fetch(`http://localhost:3000/lists/${user.id}`)
+    fetch(`https://cestprevu-backend.onrender.com/lists/${user.id}`)
       .then((res) => res.json())
       .then((listsData) => {
         if (listsData.result) setLists(listsData.lists);
@@ -29,7 +29,7 @@ export default function AccountPage() {
   }, [user.token]);
 
   const handleDelete = async (id: string) => {
-    const res = await fetch(`http://localhost:3000/lists/${id}`, {
+    const res = await fetch(`https://cestprevu-backend.onrender.com/lists/${id}`, {
       method: "DELETE",
     });
 

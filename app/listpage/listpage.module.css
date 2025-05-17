@@ -1,0 +1,50 @@
+.full {
+  width: 50vw;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #cdcdcd;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.button {
+  background-color: white;
+  display: inline-block;
+  border: 2px solid black;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  margin-top: 3%;
+  text-align: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  background-color: black;
+  color: white;
+}
+
+.all {
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.title {
+  font-family: "Courier Prime", monospace;
+  font-size: 3rem;
+  font-weight: bold;
+  padding-bottom: 2%;
+}

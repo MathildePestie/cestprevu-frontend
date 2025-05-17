@@ -166,3 +166,58 @@ a.secondary {
     filter: invert();
   }
 }
+
+.mainSection {
+  height: 80vh;
+}
+
+.title {
+  font-size: 3.5rem; /* Ajuste selon ton goût */
+  font-family: 'Courier Prime', monospace;
+}
+
+.subtitle {
+  font-size: 2rem;
+  padding-top: 2%;
+  font-family: 'Courier Prime', monospace;
+  font-weight: 10%;
+  padding-bottom: 50px;
+}
+
+.top {
+  padding-top: 3%;
+}
+
+.button {
+  display: inline-block;
+  border: 2px solid black;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: scale(1.1);
+  background-color: black;
+  color: white;
+}
+
+.input {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+}
+
+.compte {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.compte:hover {
+  transform: scale(1.1);
+}
+

@@ -40,3 +40,16 @@ a {
     color-scheme: dark;
   }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+
+h1, h2, h3 {
+  font-family: 'Courier Prime', monospace;
+}

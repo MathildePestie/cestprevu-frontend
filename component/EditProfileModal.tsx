@@ -49,7 +49,7 @@ const EditProfileModal: FC<Props> = ({ show, onClose, user, onUpdate }) => {
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
-        <h4>Modifier mes informations</h4>
+        <h4 className={styles.title}>Modifier mes informations</h4>
         <form onSubmit={handleSubmit}>
           <input className="form-control mb-2" value={username} onChange={e => setUsername(e.target.value)} placeholder="Nom" required />
           <input className="form-control mb-3" value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="Email" required />

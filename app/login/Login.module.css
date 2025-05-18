@@ -98,21 +98,4 @@
     }
   }
 
-  @media screen and (max-width: 768px) and (orientation: landscape) {
-    body {
-      font-size: 90%;
-      padding: 10px;
-    }
-  
-    .form {
-      width: 95vw;
-      padding: 20px;
-    }
-  
-    input,
-    button,
-    textarea {
-      font-size: 1rem;
-    }
-  }
   

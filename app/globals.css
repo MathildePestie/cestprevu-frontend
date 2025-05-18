@@ -53,3 +53,16 @@ body {
 h1, h2, h3 {
   font-family: 'Courier Prime', monospace;
 }
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .loginPage {
+    font-size: 90%;
+    padding: 10px;
+  }
+
+  .loginPage input,
+  .loginPage button,
+  .loginPage textarea {
+    font-size: 1rem;
+  }
+}

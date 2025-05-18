@@ -221,3 +221,63 @@ a.secondary {
   transform: scale(1.1);
 }
 
+@media screen and (max-width: 768px) {
+  .mainSection {
+    height: auto;
+    padding: 40px 10px;
+  }
+
+  .title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    text-align: center;
+  }
+
+  .button {
+    font-size: 1rem;
+    padding: 10px 16px;
+  }
+
+  .compte {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .mainSection {
+    height: auto;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+  }
+}
+
+.listImage {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .listImage {
+    width: 100px;
+    height: 100px;
+  }
+}

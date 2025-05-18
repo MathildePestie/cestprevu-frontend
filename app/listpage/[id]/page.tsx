@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Header from "../../../component/Header";
+import MobileDrawer from "../../../component/MobileDrawer";
+import useIsMobile from "../../../hooks/useIsMobile";
 import styles from "../id.module.css";
 import Image from "next/image";
 import { useAppSelector } from "../../../redux/store";
@@ -21,6 +23,8 @@ export default function ListDetailPage() {
   const [editDescription, setEditDescription] = useState("");
   const user = useAppSelector((state) => state.user);
   const [emailMember, setEmailMember] = useState("");
+  const isMobile = useIsMobile();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [membersCanEdit, setMembersCanEdit] = useState(false);
 
   useEffect(() => {
@@ -76,11 +80,14 @@ export default function ListDetailPage() {
   }, [id]);
 
   const handleToggleTask = (index: number) => {
-    fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}/toggle-task/${index}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token: user.token }),
-    })
+    fetch(
+      `https://cestprevu-backend.onrender.com/lists/${list._id}/toggle-task/${index}`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: user.token }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.result) {
@@ -162,11 +169,14 @@ export default function ListDetailPage() {
     e.preventDefault();
     if (!emailMember.trim() || !isOwner) return;
 
-    fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}/add-member`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token: user.token, email: emailMember }),
-    })
+    fetch(
+      `https://cestprevu-backend.onrender.com/lists/${list._id}/add-member`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: user.token, email: emailMember }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.result) {
@@ -201,11 +211,14 @@ export default function ListDetailPage() {
 
   const handleAddMemberByEmail = () => {
     if (!emailMember.trim()) return;
-    fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}/add-member`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token: user.token, email: emailMember }),
-    })
+    fetch(
+      `https://cestprevu-backend.onrender.com/lists/${list._id}/add-member`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: user.token, email: emailMember }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.result) {
@@ -219,11 +232,14 @@ export default function ListDetailPage() {
 
   const handleAddMemberByPhone = () => {
     if (!phoneMember.trim()) return;
-    fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}/add-member-phone`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token: user.token, phone: phoneMember }),
-    })
+    fetch(
+      `https://cestprevu-backend.onrender.com/lists/${list._id}/add-member-phone`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: user.token, phone: phoneMember }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.result) {
@@ -257,6 +273,30 @@ export default function ListDetailPage() {
           {/* Colonne gauche */}
           <div className={styles.tasksColumn}>
             <div className={styles.headerRow}>
+              {isMobile && (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    margin: "10px 0",
+                  }}
+                >
+                  <button
+                    onClick={() => setIsDrawerOpen(true)}
+                    style={{
+                      background: "black",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "8px",
+                      padding: "8px 16px",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Options
+                  </button>
+                </div>
+              )}
               <div className={styles.avatar}>
                 {list.owner?.username
                   ? list.owner.username.charAt(0).toUpperCase()
@@ -317,176 +357,207 @@ export default function ListDetailPage() {
           </div>
 
           {/* Colonne droite */}
-          <div className={styles.sidebar}>
-            <h5 className={styles.possible}>Modifier la liste</h5>
-            {editMode ? (
-              <>
-                <input
-                  className="form-control mb-2"
-                  value={editTitle}
-                  onChange={(e) => setEditTitle(e.target.value)}
-                />
-                <textarea
-                  className="form-control mb-2"
-                  value={editDescription}
-                  onChange={(e) => setEditDescription(e.target.value)}
-                />
-                <div className={styles.align}>
-                  <button
-                    className={styles.saveButton}
-                    onClick={handleUpdateList}
-                  >
-                    Sauvegarder
-                  </button>
-                  <button
-                    className={styles.deleteButton}
-                    onClick={() => setEditMode(false)}
-                  >
-                    Annuler
-                  </button>
-                </div>
-              </>
-            ) : (
-              <div className={styles.right}>
-                <button
-                  className={styles.saveButton2}
-                  onClick={() => setEditMode(true)}
-                >
-                  Modifier la liste
-                </button>
-              </div>
-            )}
-
-            <hr className="my-4" />
-
-            {canEdit && (
-              <>
-                <h5 className={styles.possible}>Ajouter une tâche</h5>
-                <form onSubmit={handleAddTask}>
-                  <div className={styles.first}>
-                    <input
-                      type="text"
-                      className={styles.input}
-                      placeholder="Nouvelle tâche"
-                      value={taskText}
-                      onChange={(e) => setTaskText(e.target.value)}
-                    />
-                    <button type="submit" className={styles.saveButton2}>
-                      Ajouter
+          {!isMobile && (
+            <div className={styles.sidebar}>
+              <h5 className={styles.possible}>Modifier la liste</h5>
+              {editMode ? (
+                <>
+                  <input
+                    className="form-control mb-2"
+                    value={editTitle}
+                    onChange={(e) => setEditTitle(e.target.value)}
+                  />
+                  <textarea
+                    className="form-control mb-2"
+                    value={editDescription}
+                    onChange={(e) => setEditDescription(e.target.value)}
+                  />
+                  <div className={styles.align}>
+                    <button
+                      className={styles.saveButton}
+                      onClick={handleUpdateList}
+                    >
+                      Sauvegarder
+                    </button>
+                    <button
+                      className={styles.deleteButton}
+                      onClick={() => setEditMode(false)}
+                    >
+                      Annuler
                     </button>
                   </div>
-                </form>
-              </>
-            )}
-            <hr className="my-4" />
-            <h5 className={styles.possible}>Ajouter un membre</h5>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                if (!list._id || !emailMember.trim()) return;
+                </>
+              ) : (
+                <div className={styles.right}>
+                  <button
+                    className={styles.saveButton2}
+                    onClick={() => setEditMode(true)}
+                  >
+                    Modifier la liste
+                  </button>
+                </div>
+              )}
 
-                fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}/add-member`, {
-                  method: "PATCH",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-                    token: user.token,
-                    email: emailMember,
-                  }),
-                })
-                  .then((res) => res.json())
-                  .then((data) => {
-                    if (data.result) {
-                      alert("Membre ajouté !");
-                      setEmailMember("");
-                    } else {
-                      alert(data.error || "Erreur lors de l’ajout du membre.");
-                    }
-                  });
-              }}
-            >
-              <div className={styles.second}>
-                <input
-                  type="email"
-                  className={styles.input}
-                  placeholder="Email du membre"
-                  value={emailMember}
-                  onChange={(e) => setEmailMember(e.target.value)}
-                />
-                <button
-                  type="button"
-                  className={styles.saveButton3}
-                  onClick={handleAddMemberByEmail}
-                >
-                  Par email
-                </button>
-              </div>
-              <div className={styles.second}>
-                <input
-                  type="tel"
-                  className={styles.input}
-                  placeholder="Téléphone du membre"
-                  value={phoneMember}
-                  onChange={(e) => setPhoneMember(e.target.value)}
-                />
-                <button
-                  type="button"
-                  className={styles.saveButton3}
-                  onClick={handleAddMemberByPhone}
-                >
-                  Par téléphone
-                </button>
-              </div>
-            </form>
+              <hr className="my-4" />
 
-            {list.owner?._id === user.id && (
-              <>
-                <hr className="my-4" />
-                {isOwner && (
-                  <>
-                    <h5 className={styles.possible}>Droits des membres</h5>
-                    <div className={styles.toggleWrapper}>
-                      <label className={styles.toggleSwitch}>
-                        <input
-                          type="checkbox"
-                          checked={membersCanEdit}
-                          onChange={() => {
-                            const newValue = !membersCanEdit;
-                            setMembersCanEdit(newValue);
-
-                            fetch(`https://cestprevu-backend.onrender.com/lists/${list._id}`, {
-                              method: "PATCH",
-                              headers: { "Content-Type": "application/json" },
-                              body: JSON.stringify({
-                                membersCanEdit: newValue,
-                                token: user.token,
-                              }),
-                            })
-                              .then((res) => res.json())
-                              .then((data) => {
-                                if (data.result) {
-                                  setList(data.list);
-                                } else {
-                                  alert(
-                                    "Erreur lors du changement des droits."
-                                  );
-                                  setMembersCanEdit(!newValue);
-                                }
-                              });
-                          }}
-                        />
-                        <span className={styles.toggleSlider}></span>
-                      </label>
-                      <span className={styles.toggleLabel}>
-                        {membersCanEdit ? "Oui" : "Non"}
-                      </span>
+              {canEdit && (
+                <>
+                  <h5 className={styles.possible}>Ajouter une tâche</h5>
+                  <form onSubmit={handleAddTask}>
+                    <div className={styles.first}>
+                      <input
+                        type="text"
+                        className={styles.input}
+                        placeholder="Nouvelle tâche"
+                        value={taskText}
+                        onChange={(e) => setTaskText(e.target.value)}
+                      />
+                      <button type="submit" className={styles.saveButton2}>
+                        Ajouter
+                      </button>
                     </div>
-                  </>
-                )}
-              </>
-            )}
-          </div>
+                  </form>
+                </>
+              )}
+              <hr className="my-4" />
+              <h5 className={styles.possible}>Ajouter un membre</h5>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (!list._id || !emailMember.trim()) return;
+
+                  fetch(
+                    `https://cestprevu-backend.onrender.com/lists/${list._id}/add-member`,
+                    {
+                      method: "PATCH",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        token: user.token,
+                        email: emailMember,
+                      }),
+                    }
+                  )
+                    .then((res) => res.json())
+                    .then((data) => {
+                      if (data.result) {
+                        alert("Membre ajouté !");
+                        setEmailMember("");
+                      } else {
+                        alert(
+                          data.error || "Erreur lors de l’ajout du membre."
+                        );
+                      }
+                    });
+                }}
+              >
+                <div className={styles.second}>
+                  <input
+                    type="email"
+                    className={styles.input}
+                    placeholder="Email du membre"
+                    value={emailMember}
+                    onChange={(e) => setEmailMember(e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    className={styles.saveButton3}
+                    onClick={handleAddMemberByEmail}
+                  >
+                    Par email
+                  </button>
+                </div>
+                <div className={styles.second}>
+                  <input
+                    type="tel"
+                    className={styles.input}
+                    placeholder="Téléphone du membre"
+                    value={phoneMember}
+                    onChange={(e) => setPhoneMember(e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    className={styles.saveButton3}
+                    onClick={handleAddMemberByPhone}
+                  >
+                    Par téléphone
+                  </button>
+                </div>
+              </form>
+
+              {list.owner?._id === user.id && (
+                <>
+                  <hr className="my-4" />
+                  {isOwner && (
+                    <>
+                      <h5 className={styles.possible}>Droits des membres</h5>
+                      <div className={styles.toggleWrapper}>
+                        <label className={styles.toggleSwitch}>
+                          <input
+                            type="checkbox"
+                            checked={membersCanEdit}
+                            onChange={() => {
+                              const newValue = !membersCanEdit;
+                              setMembersCanEdit(newValue);
+
+                              fetch(
+                                `https://cestprevu-backend.onrender.com/lists/${list._id}`,
+                                {
+                                  method: "PATCH",
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                  },
+                                  body: JSON.stringify({
+                                    membersCanEdit: newValue,
+                                    token: user.token,
+                                  }),
+                                }
+                              )
+                                .then((res) => res.json())
+                                .then((data) => {
+                                  if (data.result) {
+                                    setList(data.list);
+                                  } else {
+                                    alert(
+                                      "Erreur lors du changement des droits."
+                                    );
+                                    setMembersCanEdit(!newValue);
+                                  }
+                                });
+                            }}
+                          />
+                          <span className={styles.toggleSlider}></span>
+                        </label>
+                        <span className={styles.toggleLabel}>
+                          {membersCanEdit ? "Oui" : "Non"}
+                        </span>
+                      </div>
+                    </>
+                  )}
+                </>
+              )}
+            </div>
+          )}
         </div>
       </main>
+      <MobileDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        title={list.title}
+        description={list.description}
+        onEdit={() => {
+          setEditMode(true);
+          setIsDrawerOpen(false);
+        }}
+        onAddMemberByEmail={handleAddMemberByEmail}
+        onAddMemberByPhone={handleAddMemberByPhone}
+        emailMember={emailMember}
+        setEmailMember={setEmailMember}
+        phoneMember={phoneMember}
+        setPhoneMember={setPhoneMember}
+        membersCanEdit={membersCanEdit}
+        toggleMembersCanEdit={handleToggleMembersCanEdit}
+        isOwner={isOwner}
+      />
     </>
   );
 }

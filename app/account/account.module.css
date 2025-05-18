@@ -37,3 +37,38 @@
     font-weight: bold;
     margin-bottom: 5%;
   }
+
+  @media screen and (max-width: 768px) {
+    .title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    .infoT {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  
+    .info {
+      font-size: 1rem;
+      text-align: center;
+    }
+  
+    .button {
+      justify-content: center;
+      margin-top: 20px;
+    }
+  
+    .none {
+      text-align: center;
+      font-size: 1rem;
+    }
+  
+    /* Ajout bonus pour les listes */
+    .listCard {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  

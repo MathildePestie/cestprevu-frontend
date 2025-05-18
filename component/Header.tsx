@@ -39,6 +39,7 @@ export default function Header() {
           <Image
             onClick={handleHome}
             src="/images/logo.svg"
+            className="logoHeader"
             alt="Logo c'est prévu"
             width={200}
             height={200}

@@ -58,6 +58,7 @@ export default function ParticipantsPage() {
                     <img
                       src="/images/cross.svg"
                       alt="Supprimer"
+                      aria-label={`Supprimer ${m.username}`}
                       className={styles.removeIcon}
                       onClick={() => {
                         if (confirm(`Retirer ${m.username} de la liste ?`)) {

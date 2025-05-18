@@ -35,6 +35,7 @@ export default function Home() {
               alt="Illustration liste"
               width={200}
               height={200}
+              className={styles.listImage}
             />
           </div>
           <div className={`mt-4 ${styles.top}`}>

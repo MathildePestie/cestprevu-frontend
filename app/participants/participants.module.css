@@ -86,3 +86,42 @@
   justify-content: flex-start;
   align-items: center;
 }
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .createur,
+  .membre {
+    font-size: 1.2rem;
+    flex-wrap: wrap;
+    margin-left: 1rem;
+  }
+
+  .membreNom,
+  .membreNomN {
+    font-size: 1rem;
+    margin-left: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .icon,
+  .icon2 {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1rem;
+  }
+
+  .removeIcon {
+    margin-left: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .membreNom {
+    margin-bottom: 1rem;
+  }
+}
+

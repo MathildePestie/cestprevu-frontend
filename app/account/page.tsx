@@ -29,9 +29,12 @@ export default function AccountPage() {
   }, [user.token]);
 
   const handleDelete = async (id: string) => {
-    const res = await fetch(`https://cestprevu-backend.onrender.com/lists/${id}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `https://cestprevu-backend.onrender.com/lists/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
 
     const data = await res.json();
     if (data.result) {
@@ -44,8 +47,10 @@ export default function AccountPage() {
     <>
       <Header />
       <main className="container mt-5">
-        <div className="row">
-          {/* Partie droite : listes */}
+        <div
+          className={`d-flex flex-wrap flex-md-nowrap flex-column-reverse flex-md-row gap-4`}
+        >
+          {/* Bloc gauche = Listes */}
           <div className="col-md-8">
             <h4 className={`fw-bold mb-3 ${styles.title}`}>Mes listes</h4>
             {lists.length > 0 ? (
@@ -69,7 +74,9 @@ export default function AccountPage() {
               <p className={styles.none}>Tu n’as pas encore créé de liste</p>
             )}
           </div>
-          <div className="col-md-4 mb-4">
+
+          {/* Bloc droit = Profil */}
+          <div className="col-md-4">
             <div className="p-4 border rounded shadow-sm">
               <h4 className={styles.infoT}>Mon profil</h4>
               <p className={styles.info}>
@@ -91,18 +98,6 @@ export default function AccountPage() {
                 />
               </div>
             </div>
-
-            <EditProfileModal
-              show={showEditModal}
-              onClose={() => setShowEditModal(false)}
-              user={{
-                username: user.username,
-                email: user.email,
-                phone: user.phone,
-                token: user.token,
-              }}
-              onUpdate={(newUser) => {}}
-            />
           </div>
         </div>
       </main>

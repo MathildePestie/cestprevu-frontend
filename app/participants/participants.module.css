@@ -96,7 +96,7 @@
   .createur,
   .membre {
     font-size: 1.2rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin-left: 1rem;
   }
 
@@ -114,6 +114,14 @@
     margin-right: 1rem;
   }
 
+  .air {
+    margin-left: 1rem; /* ou 8px */
+  }
+
+  .membre {
+    margin-left: 3.8rem; /* même valeur que .membreNom */
+  }
+
   .removeIcon {
     margin-left: 0.5rem;
   }
@@ -125,3 +133,44 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .membre,
+  .membreNom,
+  .membreNomN {
+    margin-left: 2rem;
+  }
+
+  .air {
+    margin-left: 0.5rem;
+  }
+}
+
+.separator {
+  width: 0%;
+  height: 1px;
+  background-color: #ccc;
+  margin: 2rem auto;
+  opacity: 0.6;
+  animation: expandLine 0.6s ease-out forwards;
+}
+
+@keyframes expandLine {
+  to {
+    width: 80%;
+  }
+}
+
+.slideIn {
+  animation: slideInFade 0.6s ease-out both;
+}
+
+@keyframes slideInFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

@@ -28,7 +28,8 @@ const EditProfileModal: FC<Props> = ({ show, onClose, user, onUpdate }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const response = await fetch('http://localhost:3001/users/update', {
+    const response = await fetch('https://cestprevu-backend.onrender.com/users/update', {
+
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token: user.token, username, email, phone }),

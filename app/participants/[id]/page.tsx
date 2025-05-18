@@ -42,11 +42,12 @@ export default function ParticipantsPage() {
               <span className={styles.air}>{list.owner.username}</span>
             </li>
           </div>
+          <div className={styles.separator}></div>
           {list.members?.length > 0 ? (
             <>
               <h4 className={styles.membre}>Membres :</h4>
               {list.members.map((m: any) => (
-                <li className={styles.membreNom} key={m._id}>
+                <li className={`${styles.membreNom} ${styles.slideIn}`} key={m._id}>
                   <img
                     className={styles.icon2}
                     src="/images/account.svg"

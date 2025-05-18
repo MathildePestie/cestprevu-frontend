@@ -63,19 +63,7 @@ export default function Header() {
                 />
               </div>
               <div className={styles.icon}>
-                <div
-                  onClick={handleAccountClick}
-                  style={{
-                    borderRadius: "50%",
-                    backgroundColor: "black",
-                    color: "white",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}
-                >
+                <div className={styles.avatar} onClick={handleAccountClick}>
                   {user.username.charAt(0).toUpperCase()}
                 </div>
               </div>

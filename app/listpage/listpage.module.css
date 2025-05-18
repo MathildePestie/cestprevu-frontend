@@ -37,6 +37,7 @@
 
 .all {
   width: 100vw;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -52,15 +53,18 @@
   .title {
     font-size: 1.8rem;
     text-align: center;
+    margin-bottom: 20px;
   }
 
-  .form {
+  .full {
     width: 90vw;
     padding: 25px;
   }
 
   .input {
     width: 100%;
+    font-size: 1rem;
+    padding: 12px;
     margin-bottom: 15px;
   }
 }

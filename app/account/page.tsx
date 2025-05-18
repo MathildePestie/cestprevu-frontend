@@ -100,6 +100,15 @@ export default function AccountPage() {
             </div>
           </div>
         </div>
+        <EditProfileModal
+          show={showEditModal}
+          onClose={() => setShowEditModal(false)}
+          user={user}
+          onUpdate={(updatedUser) => {
+            // tu peux mettre à jour le store Redux ici si tu veux
+            console.log("Mise à jour utilisateur :", updatedUser);
+          }}
+        />
       </main>
     </>
   );

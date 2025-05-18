@@ -274,18 +274,24 @@ export default function ListDetailPage() {
           <div className={styles.tasksColumn}>
             <div className={styles.headerRow}>
               {isMobile && (
-                  <div className={styles.mobileOptionsWrapper}>
-                  <button onClick={() => setIsDrawerOpen(true)} className={styles.optionsButton}>
+                <div className={styles.mobileOptionsWrapper}>
+                  <button
+                    onClick={() => setIsDrawerOpen(true)}
+                    className={styles.optionsButton}
+                  >
                     Options
                   </button>
                 </div>
               )}
-              <div className={styles.avatar}>
-                {list.owner?.username
-                  ? list.owner.username.charAt(0).toUpperCase()
-                  : "?"}
+
+              <div className={styles.headerRow}>
+                <div className={styles.avatar}>
+                  {list.owner?.username
+                    ? list.owner.username.charAt(0).toUpperCase()
+                    : "?"}
+                </div>
+                <h2 className={styles.title}>{list.title}</h2>
               </div>
-              <h2 className={styles.title}>{list.title}</h2>
             </div>
             <p className={styles.description}>{list.description}</p>
             <div className={styles.seeParticipants}>

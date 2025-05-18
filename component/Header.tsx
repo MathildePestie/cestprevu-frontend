@@ -66,8 +66,6 @@ export default function Header() {
                 <div
                   onClick={handleAccountClick}
                   style={{
-                    width: 45,
-                    height: 45,
                     borderRadius: "50%",
                     backgroundColor: "black",
                     color: "white",
@@ -75,7 +73,6 @@ export default function Header() {
                     alignItems: "center",
                     justifyContent: "center",
                     fontWeight: "bold",
-                    fontSize: 20,
                     cursor: "pointer",
                   }}
                 >

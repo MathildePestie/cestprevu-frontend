@@ -274,25 +274,8 @@ export default function ListDetailPage() {
           <div className={styles.tasksColumn}>
             <div className={styles.headerRow}>
               {isMobile && (
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    margin: "10px 0",
-                  }}
-                >
-                  <button
-                    onClick={() => setIsDrawerOpen(true)}
-                    style={{
-                      background: "black",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "8px",
-                      padding: "8px 16px",
-                      fontWeight: "bold",
-                      cursor: "pointer",
-                    }}
-                  >
+                  <div className={styles.mobileOptionsWrapper}>
+                  <button onClick={() => setIsDrawerOpen(true)} className={styles.optionsButton}>
                     Options
                   </button>
                 </div>

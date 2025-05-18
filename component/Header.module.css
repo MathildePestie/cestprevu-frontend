@@ -3,6 +3,7 @@
   height: 50px;
   transition: transform 0.2s ease;
   cursor: pointer;
+  font-size: 20px,
 }
 
 .icon:hover {
@@ -22,7 +23,12 @@
 }
 
 @media screen and (max-width: 768px) {
-  .icon,
+  
+  .icon {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
   .iconR {
     width: 35px;
     height: 35px;

@@ -26,7 +26,7 @@ export default function ParticipantsPage() {
   return (
     <>
       <Header />
-      <main className="container mt-5">
+      <main className={styles.main}>
         <h2 className={styles.title}>
           Participants de la liste : {list.title}
         </h2>
@@ -47,7 +47,10 @@ export default function ParticipantsPage() {
             <>
               <h4 className={styles.membre}>Membres :</h4>
               {list.members.map((m: any) => (
-                <li className={`${styles.membreNom} ${styles.slideIn}`} key={m._id}>
+                <li
+                  className={`${styles.membreNom} ${styles.slideIn}`}
+                  key={m._id}
+                >
                   <img
                     className={styles.icon2}
                     src="/images/account.svg"
@@ -95,6 +98,9 @@ export default function ParticipantsPage() {
             <p className={styles.membreNomN}>Pas encore de membres.</p>
           )}
         </ul>
+        <button className={styles.backButton} onClick={() => history.back()}>
+          Retour
+        </button>
       </main>
     </>
   );

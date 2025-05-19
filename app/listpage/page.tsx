@@ -41,8 +41,8 @@ export default function Listpage() {
   return (
     <>
       <Header />
-      <main className={`row align-items-center`}>
-        <div className={`row align-items-center ${styles.all}`}>
+      <main className={styles.main}>
+        <div className={`${styles.main} ${styles.all}`}>
           <form
             onSubmit={(e) => {
               e.preventDefault();

@@ -1,15 +1,35 @@
 .full {
   width: 50vw;
+  max-width: 500px;
+  background: white;
   justify-content: center;
   align-items: center;
   border: 1px solid #cdcdcd;
   padding: 50px;
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transform: translateY(10px);
+  opacity: 0;
+  animation: fadeInCard 0.6s ease forwards;
+}
+
+@keyframes fadeInCard {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button {
   background-color: white;
+  color: black;
   display: inline-block;
   border: 2px solid black;
   padding: 10px 20px;
@@ -37,6 +57,7 @@
 
 .all {
   width: 100vw;
+  min-height: 80vh; /* hauteur visible */
   display: flex;
   justify-content: center;
   align-items: center;

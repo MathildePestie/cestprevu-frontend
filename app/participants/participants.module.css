@@ -89,22 +89,45 @@
 
 @media screen and (max-width: 768px) {
   .title {
-    font-size: 2rem;
+    font-family: "Courier Prime", monospace;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 2rem 0;
     text-align: center;
   }
 
-  .createur,
-  .membre {
-    font-size: 1.2rem;
-    flex-wrap: nowrap;
-    margin-left: 1rem;
+  .align, .membreNom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  
+  .createur, .membre {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto 1rem;
   }
 
-  .membreNom,
+  .space {
+    margin-inline: auto;
+  }
+
+  .title, .membre, .createur {
+    word-break: keep-word;
+  }
+
   .membreNomN {
-    font-size: 1rem;
-    margin-left: 2rem;
-    flex-wrap: wrap;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .space {
+    width: 100%;
+    max-width: 500px;
   }
 
   .icon,
@@ -118,10 +141,6 @@
     margin-left: 1rem; /* ou 8px */
   }
 
-  .membre {
-    margin-left: 3.8rem; /* même valeur que .membreNom */
-  }
-
   .removeIcon {
     margin-left: 0.5rem;
   }
@@ -130,18 +149,6 @@
 @media screen and (max-width: 768px) {
   .membreNom {
     margin-bottom: 1rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .membre,
-  .membreNom,
-  .membreNomN {
-    margin-left: 2rem;
-  }
-
-  .air {
-    margin-left: 0.5rem;
   }
 }
 
@@ -172,5 +179,41 @@
   100% {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem 1rem;
+}
+
+.backButton {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 1rem;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.backButton:hover {
+  background-color: white;
+  color: black;
+}
+
+@media screen and (min-width: 769px) {
+  .backButton {
+    display: none;
   }
 }

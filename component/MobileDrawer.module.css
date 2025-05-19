@@ -180,3 +180,22 @@
     border: 2px solid black;
   }
   
+  .input {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 0.5rem;
+  }
+
+  .sectionTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .input:focus {
+    border-color: black;
+    outline: none;
+  }

@@ -126,9 +126,9 @@ export default function MobileDrawer({
         )}
         {canEdit && (
           <>
-            <h5 className={styles.possible}>Ajouter une tâche</h5>
+            <h5 className={styles.sectionTitle}>Ajouter une tâche</h5>
             <form onSubmit={onAddTask}>
-              <div className={styles.first}>
+              <div className={styles.formGroup}>
                 <input
                   type="text"
                   className={styles.input}
@@ -136,7 +136,7 @@ export default function MobileDrawer({
                   value={taskText}
                   onChange={(e) => setTaskText(e.target.value)}
                 />
-                <button type="submit" className={styles.saveButton2}>
+                <button type="submit" className={styles.secondaryButton}>
                   Ajouter
                 </button>
               </div>

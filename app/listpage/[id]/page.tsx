@@ -272,27 +272,26 @@ export default function ListDetailPage() {
         <div className={styles.listDetail}>
           {/* Colonne gauche */}
           <div className={styles.tasksColumn}>
-            <div className={styles.headerRow}>
-              {isMobile && (
-                <div className={styles.mobileOptionsWrapper}>
-                  <button
-                    onClick={() => setIsDrawerOpen(true)}
-                    className={styles.optionsButton}
-                  >
-                    Options
-                  </button>
-                </div>
-              )}
-
-              <div className={styles.headerRow}>
-                <div className={styles.avatar}>
-                  {list.owner?.username
-                    ? list.owner.username.charAt(0).toUpperCase()
-                    : "?"}
-                </div>
-                <h2 className={styles.title}>{list.title}</h2>
+            {isMobile && (
+              <div className={styles.mobileOptionsWrapper}>
+                <button
+                  onClick={() => setIsDrawerOpen(true)}
+                  className={styles.optionsButton}
+                >
+                  Options
+                </button>
               </div>
+            )}
+
+            <div className={styles.headerRow}>
+              <div className={styles.avatar}>
+                {list.owner?.username
+                  ? list.owner.username.charAt(0).toUpperCase()
+                  : "?"}
+              </div>
+              <h2 className={styles.title}>{list.title}</h2>
             </div>
+
             <p className={styles.description}>{list.description}</p>
             <div className={styles.seeParticipants}>
               <img
@@ -546,6 +545,10 @@ export default function ListDetailPage() {
         membersCanEdit={membersCanEdit}
         toggleMembersCanEdit={handleToggleMembersCanEdit}
         isOwner={isOwner}
+        onAddTask={handleAddTask}
+        taskText={taskText}
+        setTaskText={setTaskText}
+        canEdit={canEdit}
       />
     </>
   );

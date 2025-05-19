@@ -2,76 +2,88 @@
   font-family: "Courier Prime", monospace;
   font-size: 3rem;
   font-weight: bold;
-  margin-top: 1%;
-  margin-left: 2%;
+  text-align: center;
+  margin: 2rem 0;
 }
 
-.createur {
+.main {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: flex-start;
-  margin-bottom: 3%;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2rem;
-  font-weight: bold;
-  text-wrap: nowrap;
+  padding: 2rem 1rem 6rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .align {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem; /* 👈 rapproché, fluide */
-  margin-bottom: 1.5rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
-}
-
-.air {
-  margin-left: 5%;
-}
-
-.respire {
-  margin-right: 0.5%;
-}
-
-.membre {
-  margin-top: 3%;
-  margin-bottom: 3%;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-left: 4.8rem;
+  margin-bottom: 2rem;
 }
 
 .icon {
-  width: 3rem;
-  height: 3rem;
-  margin-right: 2%;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
-.space {
-  margin-top: 3rem;
+.createur {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.icon2 {
-  width: 2rem;
-  height: 2rem;
-  margin-right: 2rem;
-  margin-left: 1rem;
+.label {
+  margin-right: 0.3rem;
+}
+
+.username {
+  font-weight: normal;
+}
+
+.separator {
+  width: 80%;
+  height: 1px;
+  background-color: #ccc;
+  margin: 2rem auto;
+  opacity: 0.6;
+}
+
+.membre {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 2rem 0 1rem;
 }
 
 .membreNom {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.2rem;
-  margin-left: 3.8rem;
+  font-size: 1.1rem;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.icon2 {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .removeIcon {
   width: 1rem;
   height: 1rem;
-  margin-left: 1rem;
   cursor: pointer;
   filter: grayscale(100%) brightness(0.6);
   transition: 0.2s ease;
@@ -84,154 +96,13 @@
 
 .membreNomN {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.2rem;
-  margin-left: 4.7rem;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 2rem;
 }
 
-@media screen and (max-width: 768px) {
-  .title {
-    font-family: "Courier Prime", monospace;
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-top: 1%;
-    text-align: center;
-  }
-
-  .icon {
-    display: none;
-  }
-
-  .align {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .align,
-  .membreNom {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem;
-  }
-
-  .label {
-    margin-right: 0.5rem;
-  }
-  
-  .username {
-    font-weight: normal;
-  }
-  
-
-  .createur,
-  .membre {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.3rem;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  .space {
-    margin-inline: auto;
-  }
-
-  .title,
-  .membre,
-  .createur {
-    word-break: keep-word;
-  }
-
-  .membreNomN {
-    text-align: center;
-    margin-top: 2rem;
-  }
-
-  .membre {
-    margin-right: 0;
-  }
-
-  .space {
-    width: 100%;
-    max-width: 500px;
-  }
-
-  .icon,
-  .icon2 {
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-right: 1rem;
-  }
-
-  .air {
-    margin-left: 1rem; /* ou 8px */
-  }
-
-  .removeIcon {
-    margin-left: 0.5rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .membreNom {
-    margin-bottom: 1rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .membreNom {
-    justify-content: center;
-    margin-left: 0; /* 👈 supprime le décalage */
-    gap: 0.5rem;
-  }
-}
-
-.separator {
-  width: 0%;
-  height: 1px;
-  background-color: #ccc;
-  margin: 2rem auto;
-  opacity: 0.6;
-  animation: expandLine 0.6s ease-out forwards;
-}
-
-@keyframes expandLine {
-  to {
-    width: 80%;
-  }
-}
-
-.slideIn {
-  animation: slideInFade 0.6s ease-out both;
-}
-
-@keyframes slideInFade {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 2rem 1rem;
-  padding-bottom: 5rem;
+.respire {
+  margin-right: 0.3rem;
 }
 
 .backButton {
@@ -254,7 +125,6 @@
   animation-delay: 0.3s;
 }
 
-
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -274,5 +144,20 @@
 @media screen and (min-width: 769px) {
   .backButton {
     display: none;
+  }
+}
+
+.slideIn {
+  animation: slideInFade 0.6s ease-out both;
+}
+
+@keyframes slideInFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

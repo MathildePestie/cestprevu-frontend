@@ -156,6 +156,10 @@
     margin-top: 2rem;
   }
 
+  .membre {
+    margin-right: 0;
+  }
+
   .space {
     width: 100%;
     max-width: 500px;

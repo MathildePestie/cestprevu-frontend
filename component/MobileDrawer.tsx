@@ -83,14 +83,19 @@ export default function MobileDrawer({
 
             <div className={styles.toggleWrapper}>
               <span>Droits de modification :</span>
-              <label className={styles.switch}>
-                <input
-                  type="checkbox"
-                  checked={membersCanEdit}
-                  onChange={toggleMembersCanEdit}
-                />
-                <span className={styles.slider}></span>
-              </label>
+              <div className={styles.toggleContainer}>
+                <label className={styles.switch}>
+                  <input
+                    type="checkbox"
+                    checked={membersCanEdit}
+                    onChange={toggleMembersCanEdit}
+                  />
+                  <span className={styles.slider}></span>
+                </label>
+                <span className={styles.toggleLabel}>
+                  {membersCanEdit ? "Activé" : "Désactivé"}
+                </span>
+              </div>
             </div>
 
             <div className={styles.formGroup}>

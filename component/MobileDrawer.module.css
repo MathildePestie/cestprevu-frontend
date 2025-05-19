@@ -199,3 +199,16 @@
     border-color: black;
     outline: none;
   }
+
+  .toggleContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .toggleLabel {
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+  }

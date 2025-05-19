@@ -117,9 +117,8 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.3rem;
     font-weight: bold;
-    text-align: center;
     margin: 0 auto 1rem;
-    margin-left: 1rem;
+    margin-left: 2rem;
   }
 
   .createur,
@@ -128,7 +127,8 @@
     font-size: 1.3rem;
     font-weight: bold;
     text-align: center;
-    margin: 0 auto 1rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
   }
 
   .space {

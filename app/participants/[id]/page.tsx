@@ -38,7 +38,7 @@ export default function ParticipantsPage() {
               src="/images/master.svg"
             />
             <span className={styles.createur}>
-              <strong>Créateur : </strong> {list.owner.username}
+              <strong>Créateur : </strong> <span className={styles.space}>{list.owner.username}</span>
             </span>
           </div>
           <div className={styles.separator}></div>
